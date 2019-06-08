@@ -7,7 +7,7 @@ use Symfony\Component\Yaml\Yaml;
 final class RxLoader
 {
 
-    public static function load(string $filename): \stdClass
+    public static function load(string $filename): ?\stdClass
     {
 
         $fileContents = file_get_contents($filename);
