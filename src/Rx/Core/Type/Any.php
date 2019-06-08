@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx\Core\Type;
 
@@ -26,6 +25,9 @@ class Any extends TypeAbstract implements TypeInterface
         'type',
     ];
 
+    /**
+     * @var array
+     */
     private $alts = [];
 
     public function __construct(\stdClass $schema, Rx $rx, ?string $propName = null)

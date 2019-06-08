@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx;
 
@@ -12,7 +11,14 @@ final class Rx
         'All', 'Any', 'Arr', 'Boolean', 'Def', 'Fail', 'Integer', 'Map', 'Nil', 'Num', 'One', 'Rec', 'Seq', 'Str',
     ];
 
+    /**
+     * @var object
+     */
     protected $typeRegistry;
+
+    /**
+     * @var array
+     */
     protected $prefixRegistry = [
         ''      => 'tag:codesimply.com,2008:rx/core/',
         '.meta' => 'tag:codesimply.com,2008:rx/meta/',

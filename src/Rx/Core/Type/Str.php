@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx\Core\Type;
 
@@ -28,7 +27,14 @@ class Str extends TypeAbstract implements TypeInterface
         'length',
     ];
 
+    /**
+     * @var string
+     */
     private $fixedValue;
+
+    /**
+     * @var RangeChecker
+     */
     private $lengthChecker;
 
     public function __construct(\stdClass $schema, Rx $rx, ?string $propName = null)

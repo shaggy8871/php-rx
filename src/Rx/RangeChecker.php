@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx;
 
@@ -9,9 +8,24 @@ final class RangeChecker
     const VALID_ARGS = ['min', 'max', 'min-ex', 'max-ex'];
     const ARGS_PROPS = ['min' => 'min', 'max' => 'max', 'min-ex' => 'minEx', 'max-ex' => 'maxEx'];
 
+    /**
+     * @var mixed
+     */
     protected $min;
+
+    /**
+     * @var mixed
+     */
     protected $minEx;
+
+    /**
+     * @var mixed
+     */
     protected $maxEx;
+
+    /**
+     * @var mixed
+     */
     protected $max;
 
     public function __construct(\stdClass $arg)

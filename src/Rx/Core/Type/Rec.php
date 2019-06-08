@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx\Core\Type;
 
@@ -28,9 +27,24 @@ class Rec extends TypeAbstract implements TypeInterface
         'type',
     ];
 
+    /**
+     * @var object
+     */
     private $required;
+
+    /**
+     * @var object
+     */
     private $optional;
+
+    /**
+     * @var object
+     */
     private $known;
+
+    /**
+     * @var object
+     */
     private $restSchema;
   
     public function __construct(\stdClass $schema, Rx $rx, ?string $propName = null)

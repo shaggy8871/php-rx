@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx\Core\Type;
 
@@ -28,7 +27,14 @@ class Num extends TypeAbstract implements TypeInterface
         'value',
     ];
 
+    /**
+     * @var RangeChecker
+     */
     private $rangeChecker;
+
+    /**
+     * @var int|float
+     */
     private $fixedValue;
 
     public function __construct(\stdClass $schema, Rx $rx, ?string $propName = null)

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx\Core\Type;
 
@@ -28,7 +27,14 @@ class Seq extends TypeAbstract implements TypeInterface
         'type',
     ];
 
+    /**
+     * @var object
+     */
     private $contentSchemata;
+
+    /**
+     * @var object
+     */
     private $tailSchema;
   
     public function __construct(\stdClass $schema, Rx $rx, ?string $propName = null)

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx\Core;
 
@@ -10,6 +9,9 @@ abstract class TypeAbstract
 
     use CheckSchemaTrait;
 
+    /**
+     * @var string
+     */
     protected $propName;
 
     public function __construct(\stdClass $schema, Rx $rx, ?string $propName = null)

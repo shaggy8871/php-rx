@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Rx\Core\Type;
 
@@ -23,6 +22,9 @@ class Map extends TypeAbstract implements TypeInterface
         'type',
     ];
 
+    /**
+     * @var object
+     */
     private $valuesSchema;
 
     public function __construct(\stdClass $schema, Rx $rx, ?string $propName = null)
