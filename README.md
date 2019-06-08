@@ -1,4 +1,4 @@
-# Shaggy8871\Rx
+# php-rx
 
 [![Author](https://img.shields.io/badge/author-@shaggy8871-blue.svg?style=flat-square)](https://twitter.com/johnginsberg)
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square)](LICENSE)
