@@ -3,22 +3,20 @@
 
 include_once("vendor/autoload.php");
 
-use Symfony\Component\Yaml\Yaml;
-
 if (! isset($argv[1]) || ! isset($argv[2]) || ! file_exists($argv[1]) || ! file_exists($argv[2])) {
     echo "  ❌  Unable to find file(s) in argument(s).\n";
     echo "      Usage: ./rx <yaml/json> <schema> [\"<glob of custom types>\"]\n";
     exit(1);
 }
 try {
-    $credentialsFile = Yaml::parse(file_get_contents($argv[1]), Yaml::PARSE_OBJECT_FOR_MAP);
+    $credentialsFile = Rx\RxLoader::load($argv[1]);
 } catch (Exception $e) {
     echo "  ❌  Unable to parse yaml/json file.\n";
     echo "      {$e->getMessage()}\n";
     exit(1);
 }
 try {
-    $schemaFile = Yaml::parse(file_get_contents($argv[2]), Yaml::PARSE_OBJECT_FOR_MAP);
+    $schemaFile = Rx\RxLoader::load($argv[2]);
 } catch (Exception $e) {
     echo "  ❌  Unable to parse schema file.\n";
     echo "      {$e->getMessage()}\n";
@@ -28,10 +26,10 @@ try {
 $rx = new Rx\Rx();
 
 // Add custom types
-if ($argv[3]) {
+if (isset($argv[3])) {
     foreach (glob($argv[3]) as $type) {
         try {
-            $typeFile = Yaml::parse(file_get_contents($type), Yaml::PARSE_OBJECT_FOR_MAP);
+            $typeFile = Rx\RxLoader::load($type);
             $rx->learnType($typeFile->uri, $typeFile->schema);
             echo "  ✅  Added {$typeFile->uri}.\n";
         } catch (Exception $e) {
