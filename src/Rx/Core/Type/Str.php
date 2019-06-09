@@ -60,14 +60,14 @@ class Str extends TypeAbstract implements TypeInterface
     {
 
         if (! is_string($value)) {
-            throw new CheckFailedException(sprintf('Key `%s` is not of type %s.', $this->propName, static::TYPE));
+            throw new CheckFailedException(sprintf('Value for %s is not of type %s.', Util::formatPropName($this->propName), static::TYPE));
         }
         if ($this->fixedValue !== null && $value != $this->fixedValue) {
-            throw new CheckFailedException(sprintf('\'%s\' does not equal value \'%s\' in `%s` %s.', strval($value), strval($this->fixedValue), $this->propName, static::TYPE));
+            throw new CheckFailedException(sprintf('\'%s\' does not equal \'%s\' in %s %s.', strval($value), strval($this->fixedValue), Util::formatPropName($this->propName), static::TYPE));
         }
     
         if ($this->lengthChecker && ! $this->lengthChecker->check(strlen($value))) {
-            throw new CheckFailedException(sprintf('\'%s\' length check fails in `%s` %s.', strval($value), $this->propName, static::TYPE));
+            throw new CheckFailedException(sprintf('\'%s\' length check fails in %s %s.', strval($value), Util::formatPropName($this->propName), static::TYPE));
         }
 
         return true;

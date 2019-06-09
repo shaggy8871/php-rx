@@ -25,7 +25,7 @@ class Boolean extends TypeAbstract implements TypeInterface
     {
 
         if (! is_bool($value)) {
-            throw new CheckFailedException(sprintf('Key %s is not of type %s.', Util::formatPropName($this->propName), static::TYPE));
+            throw new CheckFailedException(sprintf('Value for %s is not of type %s.', Util::formatPropName($this->propName), static::TYPE));
         }
 
         return true;

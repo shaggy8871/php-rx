@@ -44,10 +44,7 @@ class Num extends TypeAbstract implements TypeInterface
 
         if (isset($schema->value)) {
             if (! (is_int($schema->value) || is_float($schema->value))) {
-                throw new InvalidParamTypeException(sprintf('The `value` param for %s schema is not an int or float.', static::TYPE));
-            }
-            if (static::TYPE == '//int' && is_float($schema->value) && $schema->value != floor($schema->value)) {
-                throw new InvalidParamTypeException(sprintf('The `value` param for %s schema is not an int', static::TYPE));
+                throw new InvalidParamTypeException(sprintf('The `value` for %s %s is not an int or float.', Util::formatPropName($this->propName), static::TYPE));
             }
             $this->fixedValue = $schema->value;
         }
@@ -63,9 +60,6 @@ class Num extends TypeAbstract implements TypeInterface
 
         if (! (is_int($value) || is_float($value))) {
             throw new CheckFailedException(sprintf('Expected int/float, got %s in %s %s.', gettype($value), Util::formatPropName($this->propName), static::TYPE));
-        }
-        if (static::TYPE == '//int' && is_float($value) && $value != floor($value)) {
-            throw new CheckFailedException(sprintf('Key %s is not of type %s.', Util::formatPropName($this->propName), static::TYPE));
         }
 
         if ($this->fixedValue !== null) {

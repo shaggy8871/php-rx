@@ -11,7 +11,8 @@ use Rx\{
     Util
 };
 use Rx\Exception\{
-    NoAlternativesGivenException, 
+    MissingParamException, 
+    InvalidParamTypeException,
     CheckFailedException
 };
 
@@ -36,7 +37,10 @@ class All extends TypeAbstract implements TypeInterface
         parent::__construct($schema, $rx, $propName);
 
         if (empty($schema->of)) {
-            throw new NoAlternativesGivenException(sprintf("No `of` given in %s %s.", Util::formatPropName($this->propName), static::TYPE));
+            throw new MissingParamException(sprintf("No `of` key found for %s %s.", Util::formatPropName($this->propName), static::TYPE));
+        }
+        if (! is_array($schema->of)) {
+            throw new InvalidParamTypeException(sprintf('The `of` for %s %s is not an array.', Util::formatPropName($this->propName), static::TYPE));
         }
 
         foreach ($schema->of as $alt) {
